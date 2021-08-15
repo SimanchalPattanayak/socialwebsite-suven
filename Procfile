@@ -1,1 +1,1 @@
-web: ITScorer.wsgi
+web: gunicorn ITScorer.wsgi
