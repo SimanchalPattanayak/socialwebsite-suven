@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 class UserOTP(models.Model):
+	id = models.BigAutoField(primary_key=True)
 	user = models.ForeignKey(User, on_delete = models.CASCADE)
 	time_st = models.DateTimeField(auto_now = True)
 	otp = models.SmallIntegerField()
@@ -13,6 +14,7 @@ def upload_cover_to(instance,filename):
 	return f'coverImage/{instance.user.username}/{filename}'
 
 class Profile(models.Model):
+	id = models.BigAutoField(primary_key=True)
 	gen = (('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other'))
 	user = models.OneToOneField(User, on_delete = models.CASCADE)
 	about_me = models.CharField(max_length=250, null=True)
@@ -48,6 +50,7 @@ class Profile(models.Model):
 		return Notification.objects.filter(user=self.user, seen = False)
 
 class Notification(models.Model):
+	id = models.BigAutoField(primary_key=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	message = models.CharField(max_length=500)
 	link = models.CharField(max_length=500)
