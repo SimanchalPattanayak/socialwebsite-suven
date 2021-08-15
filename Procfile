@@ -1,0 +1,1 @@
+web: ITScorer.wsgi
